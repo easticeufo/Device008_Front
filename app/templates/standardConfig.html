@@ -1,0 +1,38 @@
+<div>
+    <form>
+        <br>
+        <div class="row">
+            <div class="col-xs-6" align="right">名称/型号：</div>
+            <div class="col-xs-6" align="left">
+                <input type="text" style="width: 95%" ng-model="standard.name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6" align="right">编号：</div>
+            <div class="col-xs-6" align="left">
+                <input type="text" style="width: 95%" ng-model="standard.number">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6" align="right">测量范围/准确度：</div>
+            <div class="col-xs-6" align="left">
+                <input type="text" style="width: 95%" ng-model="standard.accuracy">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6" align="right">证书编号/有效期限：</div>
+            <div class="col-xs-6" align="left">
+                <input type="text" style="width: 95%" ng-model="standard.certificateNumber">
+            </div>
+        </div>
+        <div class="row">
+            <br>
+            <div class="col-xs-6"></div>
+            <div class="col-xs-6" align="left">
+                <button type="submit" class="btn btn-info" ng-click="configStandard()">
+                    <span class="glyphicon glyphicon-ok"></span> 提交
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

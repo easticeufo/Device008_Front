@@ -1,0 +1,18 @@
+<div class="container-fluid main">
+    <div class="row" style="background:#234">
+        <ul class="nav nav-pills col-xs-10">
+            <li ui-sref-active="active"><a ui-sref="main.circulations">流转单</a></li>
+            <li ui-sref-active="active"><a ui-sref="main.certificates">证书管理</a></li>
+            <li ui-sref-active="active"><a ui-sref="main.standards">标准器管理</a></li>
+            <li ui-sref-active="active"><a ui-sref="main.models">型号管理</a></li>
+            <li ui-sref-active="active"><a ui-sref="main.references">依据管理</a></li>
+            <li ui-sref-active="active"><a ui-sref="main.manufacturers">制造厂管理</a></li>
+            <li ui-sref-active="active" ng-hide="loginUser.level > 1"><a ui-sref="main.users">用户管理</a></li>
+            <li ui-sref-active="active"><a ui-sref="login" ng-click="doLogout()">登出</a></li>
+        </ul>
+        <div class="col-xs-2" style="color: white">欢迎,{{loginUser.name}}</div>
+    </div>
+    <div class="row">
+        <div ui-view></div>
+    </div>
+</div>

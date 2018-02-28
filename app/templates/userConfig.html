@@ -1,0 +1,28 @@
+<div>
+    <form>
+        <br>
+        <div class="row" align="center"><h4>{{title}}</h4></div>
+        <div class="row">
+            <div class="col-xs-6" align="right">用户名：</div>
+            <input type="text" style="width: 95%" placeholder="请输入用户名" ng-model="user.username">
+        </div>
+        <div class="row">
+            <div class="col-xs-6" align="right">密码：</div>
+            <input type="password" placeholder="请输入密码" ng-model="user.password" align="left">
+        </div>
+        <div class="row">
+            <div class="col-xs-6" align="right">姓名：</div>
+            <input type="text" placeholder="请输入操作员姓名" ng-model="user.name" align="left">
+        </div>
+        <div class="row">
+            <br>
+
+            <div class="col-xs-6"></div>
+            <div class="col-xs-6" align="left">
+                <button type="submit" class="btn btn-info" ng-click="configUser()">
+                    <span class="glyphicon glyphicon-ok"></span> 提交
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,37 @@
+<div>
+    <form>
+        <br>
+        <div class="row">
+            <div class="col-xs-6" align="right">流转号：</div>
+            <input type="text" placeholder="请输入流转号" ng-model="circulation.number" align="left">
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <select ng-options="certificate as certificate.unit for certificate in certificates" ng-model="select.certificate" ng-change="selectCertificate()">
+                </select>
+            </div>
+            <div class="col-xs-2">
+                证书单位：
+            </div>
+            <div class="col-xs-3">
+                <input type="text" style="width: 90%" placeholder="请输入证书单位" ng-model="circulation.certificateUnit">
+            </div>
+            <div class="col-xs-2">
+                证书单位地址：
+            </div>
+            <div class="col-xs-3">
+                <input type="text" style="width: 90%" placeholder="请输入证书单位地址" ng-model="circulation.certificateAddress">
+            </div>
+        </div>
+        <div class="row">
+            <br>
+
+            <div class="col-xs-6"></div>
+            <div class="col-xs-6" align="left">
+                <button type="submit" class="btn btn-info" ng-click="configCirculation()">
+                    <span class="glyphicon glyphicon-ok"></span> 确定
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,246 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3">
+            <span>报告类型:</span>
+            <select ng-options="reportType.id as reportType.label for reportType in reportTypes" ng-model="measure.reportType">
+            </select>
+            <span ng-show="measure.reportType == 1">结论:</span>
+            <select ng-model="measure.conclusion" ng-show="measure.reportType == 1">
+                <option value="1级合格">1级合格</option>
+                <option value="2级合格">2级合格</option>
+                <option value="3级合格">3级合格</option>
+                <option value="4级合格">4级合格</option>
+                <option value="5级合格">5级合格</option>
+                <option value="6级合格">6级合格</option>
+                <option value="10级合格">10级合格</option>
+                <option value="不合格">不合格</option>
+            </select>
+            <span ng-show="measure.reportType == 2">扩展不确定度：Urel=</span>
+            <input type="text" ng-model="measure.uncertainty" style="width: 11%" ng-show="measure.reportType == 2">
+            <span ng-show="measure.reportType == 2">%</span>
+        </div>
+        <div class="col-xs-3">
+            <span>计量地点:</span>
+            <input type="text" ng-model="measure.address">
+        </div>
+        <div class="col-xs-3">
+            <span>环境温度:</span>
+            <input type="text" ng-model="measure.temperature">
+            <span>℃</span>
+        </div>
+        <div class="col-xs-3">
+            <span>相对湿度:</span>
+            <input type="text" ng-model="measure.humidity">
+            <span>%</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <span>内部标示:</span>
+            <input type="text" style="width: 70%" ng-model="measure.interiorSign">
+        </div>
+        <div class="col-xs-4">
+            <span>检测日期:</span>
+            <input type="text" uib-datepicker-popup ng-model="measure.time" is-open="timeOpened" ng-click="timeOpened=true">
+        </div>
+        <div class="col-xs-4">
+            <span>有效日期:</span>
+            <input type="text" uib-datepicker-popup ng-model="measure.expiryTime" is-open="expiryTimeOpened" ng-click="expiryTimeOpened=true">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <span>依据1:</span>
+            <input type="text" style="width: 40%" ng-model="measure.reference1">
+            <select ng-options="reference.name as reference.name for reference in references" ng-model="measure.reference1">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <span>依据2:</span>
+            <input type="text" style="width: 40%" ng-model="measure.reference2">
+            <select ng-options="reference.name as reference.name for reference in references" ng-model="measure.reference2">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <span>依据3:</span>
+            <input type="text" style="width: 40%" ng-model="measure.reference3">
+            <select ng-options="reference.name as reference.name for reference in references" ng-model="measure.reference3">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <span>标准器1:</span>
+            <select ng-options="standard as standard.name for standard in standards" ng-model="select.standard1" ng-change="selectStandard(1)">
+            </select>
+            <span>名称/型号:</span>
+            <input type="text" ng-model="measure.standardName1">
+            <span>编号:</span>
+            <input type="text" ng-model="measure.standardNumber1">
+            <span>测量范围/准确度:</span>
+            <input type="text" ng-model="measure.standardAccuracy1">
+            <span>证书编号/有效期限:</span>
+            <input type="text" ng-model="measure.standardCertificateNumber1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <span>标准器2:</span>
+            <select ng-options="standard as standard.name for standard in standards" ng-model="select.standard2" ng-change="selectStandard(2)">
+            </select>
+            <span>名称/型号:</span>
+            <input type="text" ng-model="measure.standardName2">
+            <span>编号:</span>
+            <input type="text" ng-model="measure.standardNumber2">
+            <span>测量范围/准确度:</span>
+            <input type="text" ng-model="measure.standardAccuracy2">
+            <span>证书编号/有效期限:</span>
+            <input type="text" ng-model="measure.standardCertificateNumber2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <span>标准器3:</span>
+            <select ng-options="standard as standard.name for standard in standards" ng-model="select.standard3" ng-change="selectStandard(3)">
+            </select>
+            <span>名称/型号:</span>
+            <input type="text" ng-model="measure.standardName3">
+            <span>编号:</span>
+            <input type="text" ng-model="measure.standardNumber3">
+            <span>测量范围/准确度:</span>
+            <input type="text" ng-model="measure.standardAccuracy3">
+            <span>证书编号/有效期限:</span>
+            <input type="text" ng-model="measure.standardCertificateNumber3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <span>被检仪器准确度:</span>
+            <input type="text" style="width: 70%" ng-model="measure.accuracy">
+        </div>
+        <div class="col-xs-4">
+            <span>检定/校准方位:</span>
+            <select ng-model="measure.direction">
+                <option value="水平试验状态">水平试验状态</option>
+                <option value="垂直试验状态">垂直试验状态</option>
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <span>测量类型:</span>
+            <select ng-model="measure.type">
+                <option value="示值式">示值式</option>
+                <option value="预置式">预置式</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <span>样品名称:</span>
+            <input type="text" ng-model="measure.sampleName">
+        </div>
+        <div class="col-xs-3">
+            <span>样品编号:</span>
+            <input type="text" ng-model="measure.sampleNumber">
+        </div>
+        <div class="col-xs-3">
+            <span>型号:</span>
+            <input type="text" ng-model="measure.model">
+            <select ng-options="model.name as model.name for model in models" ng-model="measure.model">
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <span>制造厂:</span>
+            <input type="text" ng-model="measure.manufacturer">
+            <select ng-options="manufacturer.name as manufacturer.name for manufacturer in manufacturers" ng-model="measure.manufacturer">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <span>检测费用:</span>
+            <input type="text" ng-model="measure.cost">
+            <span>元</span>
+        </div>
+        <div class="col-xs-4">
+            <span>项目增加费:</span>
+            <input type="text" ng-model="measure.attachCost">
+            <span>元</span>
+        </div>
+        <div class="col-xs-4">
+            <span>材料费:</span>
+            <input type="text" ng-model="measure.materialCost">
+            <span>元</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <span>修理费:</span>
+            <input type="text" ng-model="measure.repairCost">
+            <span>元</span>
+        </div>
+        <div class="col-xs-4">
+            <span>车费:</span>
+            <input type="text" ng-model="measure.fare">
+            <span>元</span>
+        </div>
+        <div class="col-xs-4">
+            <span>备注:</span>
+            <input type="text" ng-model="measure.remark">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <span>小数位数:</span>
+            <select ng-options="decimalDigit.value as decimalDigit.value for decimalDigit in decimalDigits" ng-model="measure.decimalDigits">
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <span>单位0:</span>
+            <select ng-options="unit.name as unit.name for unit in units" ng-model="measure.unit0">
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <span>单位:</span>
+            <select ng-options="unit.name as unit.name for unit in units" ng-model="measure.unit1">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-striped table-bordered center">
+                <caption>
+                    <h3 align="center">数据</h3>
+                </caption>
+                <tr class="info">
+                    <th class="center">行号</th>
+                    <th class="center">基准点1</th>
+                    <th class="center">基准点2</th>
+                    <th class="center">测量值1</th>
+                    <th class="center">测量值2</th>
+                    <th class="center">测量值3</th>
+                    <th class="center">小数位数</th>
+                </tr>
+                <tr ng-repeat="data in datas">
+                    <td>{{data.row}}</td>
+                    <td>{{data.displayBaseValue0 | number: data.decimalDigit}}</td>
+                    <td>{{data.displayBaseValue | number: data.decimalDigit}}</td>
+                    <td>{{data.displayValue1 | number: data.decimalDigit}}</td>
+                    <td>{{data.displayValue2 | number: data.decimalDigit}}</td>
+                    <td>{{data.displayValue3 | number: data.decimalDigit}}</td>
+                    <td>{{data.decimalDigit}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-info" ui-sref="main.measures({circulationId:circulationId})">返回</a>
+            <button type="button" class="btn btn-info" ng-click="configMeasure()">保存</button>
+        </div>
+    </div>
+
+</div>

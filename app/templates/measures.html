@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4">
+            <span>流转号:</span>
+            <span class="red">{{circulation.number}}</span>
+        </div>
+        <div class="col-xs-4">
+            <span>证书单位:</span>
+            <span class="red">{{circulation.certificateUnit}}</span>
+        </div>
+        <div class="col-xs-4">
+            <span>人员:</span>
+            <span class="red">{{loginUser.name}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-striped table-bordered center">
+                <caption>
+                    <h3 align="center">测量记录</h3>
+                    <a ui-sref="main.measureConfig({circulationId:circulationId,measureId:0})" class="btn btn-xs btn-primary">增加</a>
+                </caption>
+                <tr class="info">
+                    <th class="center">型号</th>
+                    <th class="center">报告类型</th>
+                    <th class="center">样品名称</th>
+                    <th class="center">样品编号</th>
+                    <th class="center">日期</th>
+                    <th class="center">操作</th>
+                </tr>
+                <tr ng-repeat="measure in measures">
+                    <td>{{measure.model}}</td>
+                    <td>{{measure.reportType | reportType}}</td>
+                    <td>{{measure.sampleName}}</td>
+                    <td>{{measure.sampleNumber}}</td>
+                    <td>{{measure.time | date:"yyyy-MM-dd"}}</td>
+                    <td>
+                        <a ui-sref="main.measureConfig({circulationId:circulationId,measureId:measure.id})" class="btn btn-success btn-xs">
+                            修改
+                        </a>
+                        <button class="btn btn-xs btn-danger" ng-click="deleteMeasure(measure)">删除</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
